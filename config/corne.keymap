@@ -48,7 +48,7 @@
                         bindings = <
    &kp  TAB  &kp EXCL  &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSPC
    &kp LCTRL &kp TILDE &trans &trans   &kp LBRC &kp RBRC    &kp LEFT  &kp DOWN  &kp UP          &kp RIGHT &kp COLON &kp DQT
-   &kp LSHFT &trans    &trans &trans   &LBKT    &RBKT       &kp UNDER &kp PLUS  &kp LT          &kp GT &kp QMARK &kp ESC
+   &kp LSHFT &trans    &trans &trans   &kp LBKT &kp RBKT    &kp UNDER &kp PLUS  &kp LT          &kp GT &kp QMARK &kp ESC
                              &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
                         >;
                 };
