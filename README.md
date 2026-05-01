@@ -8,10 +8,12 @@ The layout is intentionally kept close to a regular **QWERTY laptop keyboard** s
 
 This repository builds firmware for:
 
-- `nice_nano_v2 + corne_left`
-- `nice_nano_v2 + corne_right`
+- `nice_nano + corne_left`
+- `nice_nano + corne_right`
 
 The build matrix is defined in `build.yaml`.
+
+`nice_nano` is the current ZMK board target for the nice!nano controller family on `main`, including the v2 hardware used by this keyboard.
 
 ## Key features
 
