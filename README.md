@@ -94,6 +94,22 @@ Enabled in `config/corne.conf`:
 
 Backlight is disabled.
 
+### Battery life on a wireless-only split
+
+This board revision has no TRRS wired-split support, so the halves talk to each other over
+Bluetooth. Without a wire fallback, the peripheral (right) side keeps advertising/reconnecting
+and never powers down on its own, which drains its battery much faster than the left side.
+
+To reduce that drain, deep sleep is enabled:
+
+- After **30 s** idle, the keyboard enters the low-power **idle** state (display off, still
+  BLE-connected, instant response).
+- After **15 min** idle, it enters **deep sleep** (BLE disconnected, near-zero power draw).
+- Waking up from deep sleep only requires pressing any key, but reconnecting over BLE takes a
+  few seconds.
+- Deep sleep clears RAM, so unsaved ZMK Studio changes would be lost (not relevant to this
+  keymap-only config).
+
 ## Build
 
 GitHub Actions is configured in `.github/workflows/build.yml` and builds this config on:
