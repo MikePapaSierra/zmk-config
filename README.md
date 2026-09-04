@@ -84,7 +84,8 @@ Enabled in `config/corne.conf`:
 - USB output widget
 - typing-speed (WPM) widget
 
-Backlight, battery reporting, external-power control, idle timeout, and deep sleep are disabled.
+Backlight, battery reporting, idle display blanking, and deep sleep are disabled. External-power
+control remains enabled because it supplies the right half through the TRRS cable.
 
 ## Build
 
