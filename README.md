@@ -99,7 +99,7 @@ To build firmware:
 
 1. Push changes to GitHub.
 2. Open the latest workflow run.
-3. Download the generated artifacts for `corne_left` and `corne_right`.
+3. Download the generated artifacts for `corne_left`, `corne_right`, and `settings_reset`.
 
 ## Flashing
 
@@ -107,12 +107,26 @@ Flash each half with its matching artifact:
 
 - left half -> `corne_left`
 - right half -> `corne_right`
+- settings reset -> either half, when resetting split pairing
 
 Typical nice!nano flashing flow:
 
 1. Put the controller into bootloader mode.
 2. Mount the board as a USB drive.
 3. Copy the matching `.uf2` file onto the drive.
+
+### Resetting the split connection
+
+If either display shows the disconnected split icon, clear the stored split pairing from both
+controllers:
+
+1. Flash `settings_reset` to the left half, then to the right half.
+2. Flash `corne_left` to the left half and `corne_right` to the right half.
+3. Restart both halves at the same time.
+
+The reset image clears all persistent settings, including obsolete Bluetooth host profiles. The
+normal firmware uses BLE only to pair the two halves, and sends keyboard input to the computer
+over the USB cable connected to the left half.
 
 ## Split and output behavior
 
