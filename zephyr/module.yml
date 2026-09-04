@@ -1,4 +1,0 @@
-name: zmk-mps-status
-build:
-  settings:
-    board_root: .

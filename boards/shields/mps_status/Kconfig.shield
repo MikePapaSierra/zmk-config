@@ -1,2 +1,0 @@
-config SHIELD_MPS_STATUS
-    def_bool $(shields_list_contains,mps_status)

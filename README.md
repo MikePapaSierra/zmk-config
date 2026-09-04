@@ -28,7 +28,7 @@ The build matrix is defined in `build.yaml`.
 - Separate **Lower** and **Raise** layers
 - USB-only computer connection through the left half
 - BLE retained only for communication between split halves
-- OLED status for USB output, active layer, typing speed, and a permanent MPS logo
+- OLED status for USB output, active layer, and typing speed
 
 ## Layer diagrams
 
@@ -82,11 +82,10 @@ Raise is the number/navigation layer.
 
 Enabled in `config/corne.conf`:
 
-- OLED display with a custom status screen and permanent `MPS` logo on both halves
+- OLED display
 - active layer widget
 - USB output widget
 - typing-speed (WPM) widget
-- split-peripheral status widget for the right half
 
 Backlight, battery reporting, idle display blanking, and deep sleep are disabled. External-power
 control remains enabled because it supplies the right half through the TRRS cable.
