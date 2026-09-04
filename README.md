@@ -22,11 +22,13 @@ The build matrix is defined in `build.yaml`.
 - Left outer bottom key is a mod-tap:
   - **tap:** `LAlt`
   - **hold:** `LCtrl`
+- Hold **Lower** and press the right Space key for `Enter`
+- Both inner thumb keys send `Space`
 - Mod-tap tapping term set to **300 ms**
 - Separate **Lower** and **Raise** layers
-- Five Bluetooth profiles
-- Explicit **USB** / **BLE** output switching
-- OLED status for battery, layer, and output
+- USB-only computer connection through the left half
+- BLE retained only for communication between split halves
+- OLED status for USB output, active layer, and typing speed
 
 ## Layer diagrams
 
@@ -38,13 +40,14 @@ The build matrix is defined in `build.yaml`.
 |LSHFT |  A   |  S   |  D   |  F   |  G   |   |  H   |  J   |  K   |  L   |  ;   |  '   |
 |CTL/AL|  Z   |  X   |  C   |  V   |  B   |   |  N   |  M   |  ,   |  .   |  /   |  `   |
                 +------+------+------+           +------+------+------+
-                | LGUI | LWR  | SPC  |           | RET  | RSE  | RALT |
+                | LGUI | LWR  | SPC  |           | SPC  | RSE  | RALT |
                 +------+------+------+           +------+------+------+
 ```
 
 Notes:
 
 - `CTL/AL` means **hold for Left Ctrl, tap for Left Alt**
+- Hold **Lower** and press the right Space key for `Enter`
 - `RAlt` is useful for Polish Programmer-style host layouts
 
 ### Lower layer
@@ -66,33 +69,26 @@ Lower is the symbol/navigation layer.
 ```text
 +------+------+------+------+------+------+   +------+------+------+------+------+------+
 | TAB  |  1   |  2   |  3   |  4   |  5   |   |  6   |  7   |  8   |  9   |  0   | BSPC |
-|BTCLR | USB  | BLE  |      |      |      |   | HOME | PGDN | PGUP | END  |      | PIPE |
-|LCTRL | BT1  | BT2  | BT3  | BT4  | BT5  |   |  -   |  =   |      |      |  \   |  `   |
+|      |      |      |      |      |      |   | HOME | PGDN | PGUP | END  |      | PIPE |
+|LCTRL |      |      |      |      |      |   |  -   |  =   |      |      |  \   |  `   |
                 +------+------+------+           +------+------+------+
-                | LGUI |      | SPC  |           | RET  |      | RALT |
+                | LGUI |      | SPC  |           | SPC  |      | RALT |
                 +------+------+------+           +------+------+------+
 ```
 
-Raise is the number/system layer.
-
-Notes:
-
-- `BT1` to `BT5` select Bluetooth profiles
-- `BTCLR` clears the current Bluetooth bond
-- `USB` forces output over USB
-- `BLE` forces output over Bluetooth
+Raise is the number/navigation layer.
 
 ## Display and power
 
 Enabled in `config/corne.conf`:
 
 - OLED display
-- battery widget
 - active layer widget
-- active output widget
-- external power support
+- USB output widget
+- typing-speed (WPM) widget
 
-Backlight is disabled.
+Backlight, battery reporting, idle display blanking, and deep sleep are disabled. External-power
+control remains enabled because it supplies the right half through the TRRS cable.
 
 ## Build
 
@@ -106,7 +102,7 @@ To build firmware:
 
 1. Push changes to GitHub.
 2. Open the latest workflow run.
-3. Download the generated artifacts for `corne_left` and `corne_right`.
+3. Download the generated artifacts for `corne_left`, `corne_right`, and `settings_reset`.
 
 ## Flashing
 
@@ -114,6 +110,7 @@ Flash each half with its matching artifact:
 
 - left half -> `corne_left`
 - right half -> `corne_right`
+- settings reset -> either half, when resetting split pairing
 
 Typical nice!nano flashing flow:
 
@@ -121,8 +118,22 @@ Typical nice!nano flashing flow:
 2. Mount the board as a USB drive.
 3. Copy the matching `.uf2` file onto the drive.
 
-## Bluetooth and output behavior
+### Resetting the split connection
 
-- Bluetooth profile selection is persistent
-- If you clear a bond, also remove the old pairing from the host
-- Output switching is useful when USB is used only for power but typing should still go over Bluetooth
+If either display shows the disconnected split icon, clear the stored split pairing from both
+controllers:
+
+1. Flash `settings_reset` to the left half, then to the right half.
+2. Flash `corne_left` to the left half and `corne_right` to the right half.
+3. Restart both halves at the same time.
+
+The reset image clears all persistent settings, including obsolete Bluetooth host profiles. The
+normal firmware uses BLE only to pair the two halves, and sends keyboard input to the computer
+over the USB cable connected to the left half.
+
+## Split and output behavior
+
+- Connect the USB cable to the left (central) half; it is the only computer-facing keyboard device.
+- The supplied TRRS cable powers the right half.
+- BLE remains active only for internal communication between the halves. There are no Bluetooth
+  profile, bond-clear, or output-switching bindings, so keyboard input is always sent over USB.
