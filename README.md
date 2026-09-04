@@ -22,15 +22,13 @@ The build matrix is defined in `build.yaml`.
 - Left outer bottom key is a mod-tap:
   - **tap:** `LAlt`
   - **hold:** `LCtrl`
-- Left middle thumb key is a layer-tap:
-  - **tap:** `Enter`
-  - **hold:** `Lower`
+- **Lower + right Space** sends `Enter`
 - Both inner thumb keys send `Space`
-- Mod-tap and layer-tap tapping terms set to **300 ms**
+- Mod-tap tapping term set to **300 ms**
 - Separate **Lower** and **Raise** layers
 - USB-only computer connection through the left half
 - BLE retained only for communication between split halves
-- OLED status for USB output, active layer, and typing speed
+- OLED status for USB output, active layer, typing speed, and a permanent MPS logo
 
 ## Layer diagrams
 
@@ -42,14 +40,14 @@ The build matrix is defined in `build.yaml`.
 |LSHFT |  A   |  S   |  D   |  F   |  G   |   |  H   |  J   |  K   |  L   |  ;   |  '   |
 |CTL/AL|  Z   |  X   |  C   |  V   |  B   |   |  N   |  M   |  ,   |  .   |  /   |  `   |
                 +------+------+------+           +------+------+------+
-                | LGUI |ENT/LWR| SPC  |           | SPC  | RSE  | RALT |
+                | LGUI | LWR  | SPC  |           | SPC  | RSE  | RALT |
                 +------+------+------+           +------+------+------+
 ```
 
 Notes:
 
 - `CTL/AL` means **hold for Left Ctrl, tap for Left Alt**
-- `ENT/LWR` means **tap for Enter, hold for Lower**
+- Press **Lower + right Space** together for `Enter`
 - `RAlt` is useful for Polish Programmer-style host layouts
 
 ### Lower layer
@@ -84,10 +82,11 @@ Raise is the number/navigation layer.
 
 Enabled in `config/corne.conf`:
 
-- OLED display
+- OLED display with a custom status screen and permanent `MPS` logo on both halves
 - active layer widget
 - USB output widget
 - typing-speed (WPM) widget
+- split-peripheral status widget for the right half
 
 Backlight, battery reporting, idle display blanking, and deep sleep are disabled. External-power
 control remains enabled because it supplies the right half through the TRRS cable.
