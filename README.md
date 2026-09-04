@@ -22,7 +22,7 @@ The build matrix is defined in `build.yaml`.
 - Left outer bottom key is a mod-tap:
   - **tap:** `LAlt`
   - **hold:** `LCtrl`
-- **Lower + right Space** sends `Enter`
+- Hold **Lower** and press the right Space key for `Enter`
 - Both inner thumb keys send `Space`
 - Mod-tap tapping term set to **300 ms**
 - Separate **Lower** and **Raise** layers
@@ -47,7 +47,7 @@ The build matrix is defined in `build.yaml`.
 Notes:
 
 - `CTL/AL` means **hold for Left Ctrl, tap for Left Alt**
-- Press **Lower + right Space** together for `Enter`
+- Hold **Lower** and press the right Space key for `Enter`
 - `RAlt` is useful for Polish Programmer-style host layouts
 
 ### Lower layer
@@ -58,7 +58,7 @@ Notes:
 |LSHFT |      |      |      |  {   |  }   |   | LEFT | DOWN |  UP  | RIGHT|  :   |  "   |
 |LCTRL |      |      |      |  [   |  ]   |   |  _   |  +   |  <   |  >   |  ?   |  ~   |
                 +------+------+------+           +------+------+------+
-                | LGUI |      | SPC  |           | SPC  |      | RALT |
+                | LGUI |      | SPC  |           | RET  |      | RALT |
                 +------+------+------+           +------+------+------+
 ```
 

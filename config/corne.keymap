@@ -34,12 +34,12 @@
 // | ESC  |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | DEL  |
 // | SHFT |     |     |     |  {  |  }  |   | LFT | DWN |  UP | RGT |  :  |  "   |
 // | CTRL |     |     |     |  [  |  ]  |   |  _  |  +  |  <  |  >  |  ?  |  ~   |
-//                    | GUI |     | SPC |   | SPC |     | RALT|
+//                    | GUI |     | SPC |   | ENT |     | RALT|
                         bindings = <
    &kp  ESC  &kp EXCL  &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp DEL
    &kp LSHFT &trans    &trans &trans   &kp LBRC &kp RBRC    &kp LEFT  &kp DOWN  &kp UP          &kp RIGHT &kp COLON &kp DQT
    &kp LCTRL &trans    &trans &trans   &kp LBKT &kp RBKT    &kp UNDER &kp PLUS  &kp LT          &kp GT &kp QMARK &kp TILDE
-                             &kp LGUI &trans   &kp SPACE   &kp SPACE &trans    &kp RALT
+                             &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
                         >;
                 };
                 raise_layer {
@@ -54,16 +54,6 @@
    &kp LCTRL  &trans       &trans       &trans       &trans       &trans         &kp MINUS &kp EQUAL &trans    &trans   &kp BSLH &kp GRAVE
                                     &kp LGUI     &trans       &kp SPACE          &kp SPACE &trans   &kp RALT
                         >;
-                };
-        };
-
-        combos {
-                compatible = "zmk,combos";
-
-                lower_right_space_enter {
-                        timeout-ms = <50>;
-                        key-positions = <37 39>;
-                        bindings = <&kp RET>;
                 };
         };
 };
