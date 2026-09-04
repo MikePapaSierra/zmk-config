@@ -24,9 +24,9 @@ The build matrix is defined in `build.yaml`.
   - **hold:** `LCtrl`
 - Mod-tap tapping term set to **300 ms**
 - Separate **Lower** and **Raise** layers
-- Five Bluetooth profiles
-- Explicit **USB** / **BLE** output switching
-- OLED status for battery, layer, and output
+- USB-only computer connection through the left half
+- BLE retained only for communication between split halves
+- OLED status for USB output, active layer, and typing speed
 
 ## Layer diagrams
 
@@ -66,33 +66,25 @@ Lower is the symbol/navigation layer.
 ```text
 +------+------+------+------+------+------+   +------+------+------+------+------+------+
 | TAB  |  1   |  2   |  3   |  4   |  5   |   |  6   |  7   |  8   |  9   |  0   | BSPC |
-|BTCLR | USB  | BLE  |      |      |      |   | HOME | PGDN | PGUP | END  |      | PIPE |
-|LCTRL | BT1  | BT2  | BT3  | BT4  | BT5  |   |  -   |  =   |      |      |  \   |  `   |
+|      |      |      |      |      |      |   | HOME | PGDN | PGUP | END  |      | PIPE |
+|LCTRL |      |      |      |      |      |   |  -   |  =   |      |      |  \   |  `   |
                 +------+------+------+           +------+------+------+
                 | LGUI |      | SPC  |           | RET  |      | RALT |
                 +------+------+------+           +------+------+------+
 ```
 
-Raise is the number/system layer.
-
-Notes:
-
-- `BT1` to `BT5` select Bluetooth profiles
-- `BTCLR` clears the current Bluetooth bond
-- `USB` forces output over USB
-- `BLE` forces output over Bluetooth
+Raise is the number/navigation layer.
 
 ## Display and power
 
 Enabled in `config/corne.conf`:
 
 - OLED display
-- battery widget
 - active layer widget
-- active output widget
-- external power support
+- USB output widget
+- typing-speed (WPM) widget
 
-Backlight is disabled.
+Backlight, battery reporting, external-power control, idle timeout, and deep sleep are disabled.
 
 ## Build
 
@@ -121,8 +113,9 @@ Typical nice!nano flashing flow:
 2. Mount the board as a USB drive.
 3. Copy the matching `.uf2` file onto the drive.
 
-## Bluetooth and output behavior
+## Split and output behavior
 
-- Bluetooth profile selection is persistent
-- If you clear a bond, also remove the old pairing from the host
-- Output switching is useful when USB is used only for power but typing should still go over Bluetooth
+- Connect the USB cable to the left (central) half; it is the only computer-facing keyboard device.
+- The supplied TRRS cable powers the right half.
+- BLE remains active only for internal communication between the halves. There are no Bluetooth
+  profile, bond-clear, or output-switching bindings, so keyboard input is always sent over USB.
