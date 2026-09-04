@@ -22,7 +22,11 @@ The build matrix is defined in `build.yaml`.
 - Left outer bottom key is a mod-tap:
   - **tap:** `LAlt`
   - **hold:** `LCtrl`
-- Mod-tap tapping term set to **300 ms**
+- Left middle thumb key is a layer-tap:
+  - **tap:** `Enter`
+  - **hold:** `Lower`
+- Both inner thumb keys send `Space`
+- Mod-tap and layer-tap tapping terms set to **300 ms**
 - Separate **Lower** and **Raise** layers
 - USB-only computer connection through the left half
 - BLE retained only for communication between split halves
@@ -38,13 +42,14 @@ The build matrix is defined in `build.yaml`.
 |LSHFT |  A   |  S   |  D   |  F   |  G   |   |  H   |  J   |  K   |  L   |  ;   |  '   |
 |CTL/AL|  Z   |  X   |  C   |  V   |  B   |   |  N   |  M   |  ,   |  .   |  /   |  `   |
                 +------+------+------+           +------+------+------+
-                | LGUI | LWR  | SPC  |           | RET  | RSE  | RALT |
+                | LGUI |ENT/LWR| SPC  |           | SPC  | RSE  | RALT |
                 +------+------+------+           +------+------+------+
 ```
 
 Notes:
 
 - `CTL/AL` means **hold for Left Ctrl, tap for Left Alt**
+- `ENT/LWR` means **tap for Enter, hold for Lower**
 - `RAlt` is useful for Polish Programmer-style host layouts
 
 ### Lower layer
@@ -55,7 +60,7 @@ Notes:
 |LSHFT |      |      |      |  {   |  }   |   | LEFT | DOWN |  UP  | RIGHT|  :   |  "   |
 |LCTRL |      |      |      |  [   |  ]   |   |  _   |  +   |  <   |  >   |  ?   |  ~   |
                 +------+------+------+           +------+------+------+
-                | LGUI |      | SPC  |           | RET  |      | RALT |
+                | LGUI |      | SPC  |           | SPC  |      | RALT |
                 +------+------+------+           +------+------+------+
 ```
 
@@ -69,7 +74,7 @@ Lower is the symbol/navigation layer.
 |      |      |      |      |      |      |   | HOME | PGDN | PGUP | END  |      | PIPE |
 |LCTRL |      |      |      |      |      |   |  -   |  =   |      |      |  \   |  `   |
                 +------+------+------+           +------+------+------+
-                | LGUI |      | SPC  |           | RET  |      | RALT |
+                | LGUI |      | SPC  |           | SPC  |      | RALT |
                 +------+------+------+           +------+------+------+
 ```
 
